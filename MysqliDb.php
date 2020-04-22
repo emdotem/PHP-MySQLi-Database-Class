@@ -2490,13 +2490,13 @@ class MysqliDb
                 break;
             case 'not exists':
             case 'exists':
-                $this->_query.= $operator . $this->_buildPair ("", $val);
+                $this->_query.= " " . $operator . $this->_buildPair ("", $val);
                 break;
             default:
                 if (is_array ($val))
                     $this->_bindParams ($val);
                 else if ($val === null)
-                    $this->_query .= $operator . " NULL";
+                    $this->_query .= " $operator  NULL";
                 else if ($val != 'DBNULL' || $val == '0')
                     $this->_query .= $this->_buildPair ($operator, $val);
         }
